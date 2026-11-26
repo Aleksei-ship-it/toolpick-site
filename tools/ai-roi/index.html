@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Stack ROI Calculator — Free Tool</title>
+<meta name="description" content="Estimate what an AI tool stack actually saves your team after cost, setup time and honest adoption rates. Free, no sign-up.">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+.calc{max-width:980px;margin:0 auto;padding:34px 20px 70px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.panel{background:#fff;border:1px solid #e4e8ef;border-radius:14px;padding:22px}
+.panel h2{margin-top:0}.field{margin-bottom:16px}.field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:5px}
+.field input{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;font-size:1rem}
+.hint{color:#667085;font-size:.8rem;margin-top:4px}
+.result{background:#0f172a;color:#f8fafc;border-radius:10px;padding:16px;margin:10px 0}
+.result .big{font-size:1.9rem;font-weight:800}.result .small{color:#94a3b8;font-size:.82rem}
+.stack{margin-top:24px}.stack ul{padding-left:20px}.stack li{margin-bottom:10px}
+button{background:#1558d6;color:#fff;border:0;border-radius:7px;padding:10px 16px;font-size:.9rem;cursor:pointer}
+.pro{margin-top:22px;padding:18px;border:1px dashed #1558d6;border-radius:10px;background:#f4f8ff}
+@media(max-width:720px){.calc-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="/">ToolPick</a>
+  <nav><a href="/">Articles</a><a href="/products/">Products</a><a href="/tools/ai-roi/">ROI tool</a></nav>
+</header>
+<main class="calc">
+  <div class="hero"><h1>AI Stack ROI Calculator</h1>
+  <p>Most teams overestimate savings. Put in your real numbers and see the net result after tool cost and setup time.</p></div>
+
+  <div class="calc-grid">
+    <section class="panel">
+      <h2>Your numbers</h2>
+      <div class="field"><label for="people">People on the team</label><input id="people" type="number" min="1" max="500" value="5"></div>
+      <div class="field"><label for="rate">Average hourly cost ($)</label><input id="rate" type="number" min="1" value="45"><div class="hint">Use cost, not salary — include taxes and overhead.</div></div>
+      <div class="field"><label for="hours">Hours saved per person per week</label><input id="hours" type="number" min="0" max="40" step="0.5" value="3"><div class="hint">Be conservative. Half of what you hope is a good start.</div></div>
+      <div class="field"><label for="tools">Monthly tool cost ($)</label><input id="tools" type="number" min="0" value="120"></div>
+      <div class="field"><label for="setup">One-time setup hours (team total)</label><input id="setup" type="number" min="0" value="8"></div>
+      <div class="field"><label for="adoption">Real adoption rate (%)</label><input id="adoption" type="number" min="10" max="100" value="60"><div class="hint">People who actually use the tool every week.</div></div>
+    </section>
+
+    <section class="panel">
+      <h2>Result</h2>
+      <div class="result"><div class="big" id="net">$0</div><div class="small">Net saving per month</div></div>
+      <div class="result"><div class="big" id="roi">0%</div><div class="small">Monthly return on tool spend</div></div>
+      <p id="detail"></p>
+      <button type="button" id="copy">Copy summary</button>
+      <p class="meta" id="copied" style="display:none">Copied.</p>
+
+      <div class="pro"><strong>Want the full comparison sheet?</strong>
+      <p class="meta">Score any tool by price, minutes saved, setup time and data risk.</p>
+      <a class="btn" href="/products/ai-tool-comparison-sheet/">See the AI Tool Comparison Sheet &rarr;</a></div>
+    </section>
+  </div>
+
+  <section class="stack panel">
+    <h2>A conservative stack to start with</h2>
+    <ul>
+      <li><a href="/go/chatgpt/" rel="sponsored nofollow">ChatGPT</a> — drafting, spreadsheets, file intake. Start here.</li>
+      <li><a href="/go/zapier/" rel="sponsored nofollow">Zapier</a> — only after one workflow is proven.</li>
+      <li><a href="/go/otter/" rel="sponsored nofollow">Otter.ai</a> — if you run client calls every week.</li>
+    </ul>
+    <p class="meta">Some links are affiliate links. They never change our recommendations.</p>
+  </section>
+</main>
+<script>
+(function () {
+  const ids = ["people", "rate", "hours", "tools", "setup", "adoption"];
+  const inputs = ids.reduce((acc, id) => (acc[id] = document.getElementById(id), acc), {});
+  const num = id => Math.max(0, Number(inputs[id].value) || 0);
+
+  function calculate() {
+    const people = num("people"), rate = num("rate"), hours = num("hours");
+    const cost = num("tools"), setup = num("setup"), adoption = Math.min(100, num("adoption")) / 100;
+    const gross = people * hours * 4.33 * rate * adoption;
+    const net = gross - cost;
+    const roi = cost > 0 ? (net / cost) * 100 : 0;
+    const payback = net > 0 ? (setup * rate) / net : null;
+    document.getElementById("net").textContent = (net < 0 ? "-" : "") + "$" + Math.abs(Math.round(net)).toLocaleString();
+    document.getElementById("roi").textContent = Math.round(roi) + "%";
+    document.getElementById("detail").textContent =
+      "Gross labour saving: $" + Math.round(gross).toLocaleString() + "/mo. Tools: $" +
+      Math.round(cost).toLocaleString() + "/mo. Setup cost: $" + Math.round(setup * rate).toLocaleString() +
+      ". " + (payback === null ? "No positive monthly return yet." :
+      "Setup pays back in about " + payback.toFixed(1) + " month(s).");
+    return { net, gross, cost, roi, payback };
+  }
+
+  ids.forEach(id => inputs[id].addEventListener("input", calculate));
+  calculate();
+
+  document.getElementById("copy").addEventListener("click", async () => {
+    const r = calculate();
+    const text = "AI stack ROI — team " + inputs.people.value + ", net $" + Math.round(r.net) +
+      "/mo, ROI " + Math.round(r.roi) + "%, setup payback " +
+      (r.payback === null ? "n/a" : r.payback.toFixed(1) + " month(s)");
+    try { await navigator.clipboard.writeText(text); document.getElementById("copied").style.display = "block"; }
+    catch (_) { document.getElementById("copied").textContent = text; document.getElementById("copied").style.display = "block"; }
+  });
+})();
+</script>
+</body>
+</html>

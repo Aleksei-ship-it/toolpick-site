@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://Aleksei-ship-it.github.io/toolpick-site/sitemap.xml

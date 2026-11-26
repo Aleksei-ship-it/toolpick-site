@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f172a">
+<title>Visit Otter.ai</title>
+<meta name="description" content="Outbound link to Otter.ai.">
+<link rel="canonical" href="https://aleksei-ship-it.github.io/toolpick-site/go/otter/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Visit Otter.ai">
+<meta property="og:description" content="Outbound link to Otter.ai.">
+<meta property="og:url" content="https://aleksei-ship-it.github.io/toolpick-site/go/otter/">
+<link rel="stylesheet" href="/toolpick-site/assets/style.css">
+
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/toolpick-site/"><span class="logo-mark">T</span>ToolPick<span class="logo-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="/toolpick-site/">Articles</a><a href="/toolpick-site/about/">About</a><a href="/toolpick-site/products/">Products</a><a href="/toolpick-site/tools/ai-roi/">ROI tool</a></nav>
+    <span class="independence"><span class="live-dot"></span>Independent</span>
+  </div>
+</header>
+<main id="main"><div class="go"><h1>Leaving to Otter.ai</h1><p>You are being redirected. <a href="https://otter.ai/" rel="sponsored nofollow">Click here if nothing happens.</a></p><meta http-equiv="refresh" content="0; url=https://otter.ai/"></div></main>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="/toolpick-site/"><span class="logo-mark">T</span>ToolPick<span class="logo-dot">.</span></a>
+      <p>Practical comparisons for people who work with numbers. We test the workflow, then say what we actually found.</p>
+    </div>
+    <div class="footer-col"><strong>Explore</strong><a href="/toolpick-site/">All guides</a><a href="/toolpick-site/products/">Resources</a><a href="/toolpick-site/tools/ai-roi/">ROI calculator</a></div>
+    <div class="footer-col"><strong>ToolPick</strong><a href="/toolpick-site/about/">How we review</a><a href="/toolpick-site/sitemap.xml">Sitemap</a><a href="https://t.me/Alseamen">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>Some links on this site are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Our opinions are our own.</p><p>&copy; 2026 ToolPick. No paid placements.</p></div>
+</footer>
+
+<script>
+(function () {
+  var bar = document.getElementById('progress');
+  if (bar) {
+    var update = function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-15% 0px -75% 0px' });
+    document.querySelectorAll('.section[id]').forEach(function (el) { observer.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>

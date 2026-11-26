@@ -3,22 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f172a">
 <title>Agency AI Content Calendar</title>
 <meta name="description" content="A 12-week calendar template for repurposing one client asset into a month of posts.">
 <link rel="canonical" href="https://aleksei-ship-it.github.io/toolpick-site/products/agency-content-calendar/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Agency AI Content Calendar">
 <meta property="og:description" content="A 12-week calendar template for repurposing one client asset into a month of posts.">
-<link rel="stylesheet" href="/assets/style.css">
+<meta property="og:url" content="https://aleksei-ship-it.github.io/toolpick-site/products/agency-content-calendar/">
+<link rel="stylesheet" href="/toolpick-site/assets/style.css">
 
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 <header class="site-header">
-  <a class="logo" href="/">ToolPick</a>
-  <nav><a href="/">Articles</a><a href="/about/">About</a></nav>
+  <div class="header-inner">
+    <a class="logo" href="/toolpick-site/"><span class="logo-mark">T</span>ToolPick<span class="logo-dot">.</span></a>
+    <nav aria-label="Main navigation"><a href="/toolpick-site/">Articles</a><a href="/toolpick-site/about/">About</a><a href="/toolpick-site/products/">Products</a><a href="/toolpick-site/tools/ai-roi/">ROI tool</a></nav>
+    <span class="independence"><span class="live-dot"></span>Independent</span>
+  </div>
 </header>
-<main>
+<main id="main">
 <article class="article product-detail">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/toolpick-site/">Home</a><span>/</span><a href="/toolpick-site/products/">Resources</a><span>/</span><span>Agencies</span></nav>
   <span class="eyebrow">Agencies</span>
   <h1>Agency AI Content Calendar</h1>
   <p class="lede">A 12-week calendar template for repurposing one client asset into a month of posts.</p>
@@ -26,12 +34,45 @@
   <section class="section"><h2>What is inside</h2><ul><li>12-week CSV</li><li>Repurposing prompts</li><li>Approval column</li></ul></section>
   <section class="section"><a class="btn" href="https://zypher.exchange/to/agency-content-calendar" rel="sponsored nofollow">Buy for $19 &rarr;</a>
   <p class="meta">After paying, leave your email in the Message field at checkout (or contact @Alseamen on Telegram). We send the file within 24 hours.</p></section>
-  <aside class="related"><h3>Read the related guide</h3><ul><li><a href="/articles/best-ai-tools-for-bookkeepers/">Best AI Tools for Bookkeepers in 2026: Honest Comparison</a></li></ul></aside>
+  <aside class="related"><h3>Read the related guide</h3><div class="mini-grid"><a class="mini-card" href="/toolpick-site/articles/best-ai-tools-for-bookkeepers/"><span>Guide</span><strong>Best AI Tools for Bookkeepers in 2026: Honest Comparison</strong><span class="mini-arrow">&rarr;</span></a></div></aside>
 </article>
 </main>
 <footer class="site-footer">
-  <p>Some links on this site are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Our opinions are our own.</p>
-  <p>&copy; 2026 ToolPick. Independent comparisons, no paid placements.</p>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="/toolpick-site/"><span class="logo-mark">T</span>ToolPick<span class="logo-dot">.</span></a>
+      <p>Practical comparisons for people who work with numbers. We test the workflow, then say what we actually found.</p>
+    </div>
+    <div class="footer-col"><strong>Explore</strong><a href="/toolpick-site/">All guides</a><a href="/toolpick-site/products/">Resources</a><a href="/toolpick-site/tools/ai-roi/">ROI calculator</a></div>
+    <div class="footer-col"><strong>ToolPick</strong><a href="/toolpick-site/about/">How we review</a><a href="/toolpick-site/sitemap.xml">Sitemap</a><a href="https://t.me/Alseamen">Contact</a></div>
+  </div>
+  <div class="footer-bottom"><p>Some links on this site are affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Our opinions are our own.</p><p>&copy; 2026 ToolPick. No paid placements.</p></div>
 </footer>
+
+<script>
+(function () {
+  var bar = document.getElementById('progress');
+  if (bar) {
+    var update = function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+  if (links.length && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        links.forEach(function (link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-15% 0px -75% 0px' });
+    document.querySelectorAll('.section[id]').forEach(function (el) { observer.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>

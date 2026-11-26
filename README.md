@@ -63,6 +63,7 @@ python deploy.py "описание изменений"
 - [Hashnode: same article on the ToolPick blog](https://toolpick.hashnode.dev/the-5-minute-roi-check-i-run-before-paying-for-another-ai-tool)
 - [Indie Hackers: ToolPick product page](https://www.indiehackers.com/product/toolpick)
 - [GitHub Discussion: ToolPick is live](https://github.com/Aleksei-ship-it/toolpick-site/discussions/1)
+- [Substack: Why I started ToolPick](https://toolpick.substack.com/p/why-i-started-toolpick)
 - [GitHub profile README](https://github.com/Aleksei-ship-it)
 
 If these posts helped you, star the repo or share the [free ROI calculator](https://aleksei-ship-it.github.io/toolpick-site/tools/ai-roi/).

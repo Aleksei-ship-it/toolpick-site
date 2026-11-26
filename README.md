@@ -55,3 +55,14 @@ python deploy.py "описание изменений"
 ```
 
 Публикация идёт в ветку `gh-pages`; GitHub Pages подтягивает изменения примерно за минуту. Секреты хранятся только локально в `config/secrets.local.json` и в репозиторий не попадают.
+
+
+## Published write-ups and listings
+
+- [DEV Community: The 5-Minute ROI Check I Run Before Paying for Another AI Tool](https://dev.to/toolpick/the-5-minute-roi-check-i-run-before-paying-for-another-ai-tool-5ak1)
+- [Hashnode: same article on the ToolPick blog](https://toolpick.hashnode.dev/the-5-minute-roi-check-i-run-before-paying-for-another-ai-tool)
+- [Indie Hackers: ToolPick product page](https://www.indiehackers.com/product/toolpick)
+- [GitHub Discussion: ToolPick is live](https://github.com/Aleksei-ship-it/toolpick-site/discussions/1)
+- [GitHub profile README](https://github.com/Aleksei-ship-it)
+
+If these posts helped you, star the repo or share the [free ROI calculator](https://aleksei-ship-it.github.io/toolpick-site/tools/ai-roi/).
